@@ -1,0 +1,646 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="nsframeworkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="nsframeworkModelStoreContainer">
+    <EntitySet Name="access_settings" EntityType="nsframeworkModel.Store.access_settings" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="menu" EntityType="nsframeworkModel.Store.menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="t_Bank_data" EntityType="nsframeworkModel.Store.t_Bank_data" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="t_dmms_branch" EntityType="nsframeworkModel.Store.t_dmms_branch" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="t_dmms_master" EntityType="nsframeworkModel.Store.t_dmms_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="t_Insurance_data" EntityType="nsframeworkModel.Store.t_Insurance_data" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="t_order" EntityType="nsframeworkModel.Store.t_order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="user" EntityType="nsframeworkModel.Store.user" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="user_group" EntityType="nsframeworkModel.Store.user_group" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="user_group_access" EntityType="nsframeworkModel.Store.user_group_access" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="user_group_menu" EntityType="nsframeworkModel.Store.user_group_menu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="user_internal" EntityType="nsframeworkModel.Store.user_internal" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="access_settings">
+    <Key>
+      <PropertyRef Name="access_id" />
+    </Key>
+    <Property Name="access_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="access_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="parent_id" Type="int" Nullable="false" />
+    <Property Name="created_date" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="menu_id" />
+    </Key>
+    <Property Name="menu_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="menu_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="menu_page" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="parent_id" Type="int" Nullable="false" />
+    <Property Name="icon" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="created_date" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="t_Bank_data">
+    <Key>
+      <PropertyRef Name="bd_id" />
+      <PropertyRef Name="policy_no" />
+    </Key>
+    <Property Name="bd_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="policy_no" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="bank_ref_number" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="nric" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="old_ic" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="participant_name" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="customer_address_1" Type="text" Nullable="false" />
+    <Property Name="customer_address_2" Type="text" />
+    <Property Name="customer_address_3" Type="text" />
+    <Property Name="customer_address_4" Type="text" />
+    <Property Name="customer_address_5" Type="text" />
+    <Property Name="customer_post_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="property_type" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="property_address" Type="text" Nullable="false" />
+    <Property Name="property_address_1" Type="text" />
+    <Property Name="property_address_2" Type="text" />
+    <Property Name="property_address_3" Type="text" />
+    <Property Name="property_address_4" Type="text" />
+    <Property Name="property_post_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="risk_type" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="policy_effective_date" Type="datetime" Nullable="false" />
+    <Property Name="policy_expired_date" Type="datetime" Nullable="false" />
+    <Property Name="sum_covered" Type="decimal" Nullable="false" Scale="2" />
+  </EntityType>
+  <EntityType Name="t_dmms_branch">
+    <Key>
+      <PropertyRef Name="BRANCH_CODE" />
+      <PropertyRef Name="BRANCH_NAME" />
+    </Key>
+    <Property Name="BRANCH_CODE" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="BRANCH_NAME" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="BRANCH_ADDRESS" Type="varchar" MaxLength="800" />
+    <Property Name="TIMESTAMP" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="t_dmms_master">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="BANK_REF_NO" Type="varchar" MaxLength="300" />
+    <Property Name="NEW_NRIC" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="OLD_NRIC" Type="varchar" MaxLength="100" />
+    <Property Name="CUSTOMER_NAME" Type="varchar" MaxLength="500" />
+    <Property Name="CUSTOMER_ADD2" Type="text" />
+    <Property Name="CUSTOMER_ADD3" Type="text" />
+    <Property Name="CUSTOMER_ADD4" Type="text" />
+    <Property Name="CUSTOMER_ADD5" Type="text" />
+    <Property Name="CUSTOMER_CITY" Type="varchar" MaxLength="300" />
+    <Property Name="CUSTOMER_POSTCODE" Type="varchar" MaxLength="300" />
+    <Property Name="PROPERTY_TYPE" Type="varchar" MaxLength="300" />
+    <Property Name="PROPERTY_ADD1" Type="text" Nullable="false" />
+    <Property Name="PROPERTY_ADD2" Type="text" />
+    <Property Name="PROPERTY_ADD3" Type="text" />
+    <Property Name="PROPERTY_ADD4" Type="text" />
+    <Property Name="PROPERTY_CITY" Type="varchar" MaxLength="300" />
+    <Property Name="PROPERTY_POSCODE" Type="varchar" MaxLength="300" />
+    <Property Name="INSURANCE_TYPE" Type="varchar" MaxLength="300" />
+    <Property Name="CERT_START_DATE" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="CERT_END_DATE" Type="varchar" MaxLength="300" />
+    <Property Name="SUM_INSURED_AMOUNT" Type="varchar" MaxLength="300" />
+    <Property Name="CERTIFICATE_NO" Type="varchar" MaxLength="300" />
+    <Property Name="BANK_STAFF" Type="varchar" MaxLength="300" />
+    <Property Name="ACC_NO" Type="varchar" MaxLength="300" />
+    <Property Name="TRITON_ACC_NO" Type="varchar" MaxLength="300" />
+    <Property Name="BRANCH_CODE" Type="varchar" MaxLength="100" />
+    <Property Name="FACILTY_TYPE" Type="varchar" MaxLength="300" />
+    <Property Name="APPROVED_LIMIT" Type="varchar" MaxLength="300" />
+    <Property Name="APPROVED_DATE" Type="varchar" MaxLength="300" />
+    <Property Name="BAL_OUTSTANDING" Type="varchar" MaxLength="300" />
+    <Property Name="COST_OUTSTANDING" Type="varchar" MaxLength="300" />
+    <Property Name="PRINCIPAL_OUTSTANDING" Type="varchar" MaxLength="300" />
+    <Property Name="UEI_OUTSTANDING" Type="varchar" MaxLength="300" />
+    <Property Name="MONTH_ARREARS" Type="varchar" MaxLength="300" />
+    <Property Name="CREDIT_STATUS" Type="varchar" MaxLength="300" />
+    <Property Name="CREDIT_STAT_CHG_DATE" Type="varchar" MaxLength="300" />
+    <Property Name="NPF_STATUS" Type="varchar" MaxLength="300" />
+    <Property Name="REPORTING_BALANCE" Type="varchar" MaxLength="300" />
+    <Property Name="INCOME_ARREARS" Type="varchar" MaxLength="300" />
+    <Property Name="CURR_BAL_OUTSTANDING" Type="varchar" MaxLength="300" />
+    <Property Name="COLLATERAL_REFNO" Type="varchar" MaxLength="300" />
+    <Property Name="CLAIM_TYPE" Type="varchar" MaxLength="300" />
+    <Property Name="TITLE_NO" Type="varchar" MaxLength="300" />
+    <Property Name="LAND_OFFICE" Type="varchar" MaxLength="300" />
+    <Property Name="LOT_NO" Type="varchar" MaxLength="300" />
+    <Property Name="PROPERTY_DISTRICT" Type="varchar" MaxLength="300" />
+    <Property Name="MUKIM" Type="varchar" MaxLength="300" />
+    <Property Name="SECURITY_VALUE" Type="varchar" MaxLength="300" />
+    <Property Name="PROPERTY_DESC" Type="varchar" MaxLength="300" />
+    <Property Name="PROPERTY_OWNER1" Type="varchar" MaxLength="300" />
+    <Property Name="PROPERTY_OWNER2" Type="varchar" MaxLength="300" />
+    <Property Name="INSURANCE_COMPANY" Type="varchar" MaxLength="300" />
+    <Property Name="POLICY_NO" Type="varchar" MaxLength="300" />
+    <Property Name="COVERAGE_TYPE" Type="varchar" MaxLength="300" />
+    <Property Name="PARTICIPANT_NAME" Type="varchar" MaxLength="300" />
+    <Property Name="RISK_ADD1" Type="text" />
+    <Property Name="RISK_ADD2" Type="text" />
+    <Property Name="RISK_ADD3" Type="text" />
+    <Property Name="RISK_ADD4" Type="text" />
+    <Property Name="RISK_ADD5" Type="varchar" MaxLength="300" />
+    <Property Name="RISK_POSTCODE" Type="varchar" MaxLength="300" />
+    <Property Name="RISK_STATE_CODE" Type="varchar" MaxLength="300" />
+    <Property Name="PREMIUM_AMOUNT" Type="varchar" MaxLength="300" />
+    <Property Name="INSURANCE_LAST_MODIFIED_DATE" Type="varchar" MaxLength="300" />
+    <Property Name="STATUS" Type="varchar" MaxLength="1" />
+    <Property Name="TIMESTAMP2" Type="varchar" MaxLength="300" />
+    <Property Name="CONTRIBUTION_TO_BE_PAID_BY_CUST" Type="varchar" MaxLength="300" />
+    <Property Name="CONTRIBUTION_TO_BE_PAID_BY_BANK" Type="varchar" MaxLength="300" />
+    <Property Name="CONTRIBUTION_TO_BE_PAID_BY_BROKER" Type="varchar" MaxLength="300" />
+    <Property Name="INSURANCE_LAST_MOD_DATE" Type="varchar" MaxLength="300" />
+    <Property Name="CONTRIBUTION" Type="varchar" MaxLength="300" />
+    <Property Name="COMISSION" Type="varchar" MaxLength="300" />
+    <Property Name="STAMP_DUTY" Type="varchar" MaxLength="300" />
+    <Property Name="POLICE_OR_ARMY_NO" Type="varchar" MaxLength="300" />
+    <Property Name="PASSPORT_NO" Type="varchar" MaxLength="300" />
+    <Property Name="BRANCHES" Type="varchar" MaxLength="300" />
+    <Property Name="FileName" Type="varchar" MaxLength="300" />
+    <Property Name="UserName" Type="varchar" MaxLength="300" />
+    <Property Name="SETTLEMENT_DATE" Type="smalldatetime" />
+    <Property Name="REMARKS" Type="varchar" MaxLength="300" />
+    <Property Name="ADD_NEW_CUSTOMER_DATE" Type="smalldatetime" />
+  </EntityType>
+  <EntityType Name="t_Insurance_data">
+    <Key>
+      <PropertyRef Name="id_id" />
+    </Key>
+    <Property Name="id_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="policy_no" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="ic_breg_no" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="customer_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="bank_staff" Type="varchar" MaxLength="255" />
+    <Property Name="address_1" Type="text" Nullable="false" />
+    <Property Name="address_2" Type="text" />
+    <Property Name="address_3" Type="text" />
+    <Property Name="post_code" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="city" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="account_no" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="triton_account_no" Type="varchar" MaxLength="100" />
+    <Property Name="branch_code" Type="varchar" MaxLength="100" />
+    <Property Name="facility_type" Type="varchar" MaxLength="100" />
+    <Property Name="approved_limit" Type="varchar" MaxLength="300" />
+    <Property Name="approved_date" Type="datetime" />
+    <Property Name="balance_outstanding" Type="varchar" MaxLength="300" />
+    <Property Name="cost_outstanding" Type="varchar" MaxLength="300" />
+    <Property Name="principal_outstanding" Type="varchar" MaxLength="300" />
+    <Property Name="uei_outstanding" Type="varchar" MaxLength="300" />
+    <Property Name="month_arrears" Type="varchar" MaxLength="300" />
+    <Property Name="credit_status" Type="varchar" MaxLength="300" />
+    <Property Name="credit_stat_change_date" Type="datetime" />
+    <Property Name="npf_status" Type="varchar" MaxLength="300" />
+    <Property Name="reporting_balance" Type="varchar" MaxLength="300" />
+    <Property Name="income_arrears" Type="varchar" MaxLength="300" />
+    <Property Name="curr_balance_outstanding" Type="varchar" MaxLength="300" />
+    <Property Name="collateral_ref_number" Type="varchar" MaxLength="300" />
+    <Property Name="claim_type" Type="varchar" MaxLength="300" />
+    <Property Name="property_type" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="title_no" Type="varchar" MaxLength="300" />
+    <Property Name="land_office" Type="varchar" MaxLength="300" />
+    <Property Name="lot_number" Type="varchar" MaxLength="300" />
+    <Property Name="property_address_1" Type="text" />
+    <Property Name="property_address_2" Type="text" />
+    <Property Name="property_address_3" Type="text" />
+    <Property Name="property_district" Type="varchar" MaxLength="300" />
+    <Property Name="mukim" Type="varchar" MaxLength="300" />
+    <Property Name="property_city" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="property_post_code" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="security_value" Type="varchar" MaxLength="300" />
+    <Property Name="property_desc" Type="text" />
+    <Property Name="property_owner_1" Type="varchar" MaxLength="300" />
+    <Property Name="property_owner_2" Type="varchar" MaxLength="300" />
+    <Property Name="insurance_company" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="insurance_type" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="coverage_type" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="participant_name" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="risk_address_1" Type="text" Nullable="false" />
+    <Property Name="risk_address_2" Type="text" />
+    <Property Name="risk_address_3" Type="text" />
+    <Property Name="risk_post_code" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="risk_city" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="risk_state_code" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="risk_country_code" Type="varchar" MaxLength="300" />
+    <Property Name="start_date" Type="datetime" Nullable="false" />
+    <Property Name="end_date" Type="datetime" Nullable="false" />
+    <Property Name="premium_amt" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="sum_insured_amt" Type="varchar" Nullable="false" MaxLength="300" />
+    <Property Name="insurance_last_modified_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="t_order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="full_name" Type="varchar" Nullable="false" />
+    <Property Name="address" Type="text" Nullable="false" />
+    <Property Name="zip_code" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="area" Type="varchar" Nullable="false" />
+    <Property Name="country" Type="varchar" Nullable="false" />
+    <Property Name="phone" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="mobile_phone" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="id_card_number" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="birth_date" Type="datetime" Nullable="false" />
+    <Property Name="height" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="weight" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="gender" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="marriage_status" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="haji" Type="int" Nullable="false" />
+    <Property Name="pewaris_name" Type="varchar" Nullable="false" />
+    <Property Name="pewaris_id_card_number" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="pewaris_relation" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="pewaris_gender" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="pewaris_phone" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="pewaris_payment_for" Type="varchar" Nullable="false" />
+    <Property Name="order_money" Type="decimal" Nullable="false" Scale="2" />
+    <Property Name="check_number" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="order_name" Type="varchar" Nullable="false" />
+    <Property Name="order_tarikh" Type="datetime" Nullable="false" />
+    <Property Name="order_kp_number" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="wakil_name" Type="varchar" Nullable="false" />
+    <Property Name="wakil_tarikh" Type="datetime" Nullable="false" />
+    <Property Name="wakil_code" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="created_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="user_name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="user_email" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="user_password" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="user_first_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="user_last_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="user_last_login" Type="datetime" Nullable="false" />
+    <Property Name="user_group_id" Type="int" Nullable="false" />
+    <Property Name="user_birth_place" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="user_birth_date" Type="datetime" Nullable="false" />
+    <Property Name="user_address" Type="text" Nullable="false" />
+    <Property Name="user_social_number" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="user_phone_number" Type="varchar" MaxLength="100" />
+    <Property Name="user_id_card_file" Type="varchar" MaxLength="255" />
+    <Property Name="user_photo_file" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="user_gender" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="user_marital_status" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="created_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user_group">
+    <Key>
+      <PropertyRef Name="user_group_id" />
+    </Key>
+    <Property Name="user_group_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="user_group_name" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="created_date" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="user_group_access">
+    <Key>
+      <PropertyRef Name="uga_id" />
+    </Key>
+    <Property Name="uga_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="access_id" Type="int" Nullable="false" />
+    <Property Name="user_group_id" Type="int" Nullable="false" />
+    <Property Name="created_date" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="user_group_menu">
+    <Key>
+      <PropertyRef Name="ugm_id" />
+    </Key>
+    <Property Name="ugm_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="user_group_id" Type="int" Nullable="false" />
+    <Property Name="menu_id" Type="int" Nullable="false" />
+    <Property Name="created_date" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="user_internal">
+    <Key>
+      <PropertyRef Name="ui_id" />
+    </Key>
+    <Property Name="ui_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="int" Nullable="false" />
+    <Property Name="ui_nip" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ui_jabatan" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="ui_grade" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="created_date" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="updated_date" Type="datetime" Nullable="false" />
+    <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <Function Name="get_menu_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menu_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_access_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="access_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_access_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="access_name" Type="varchar" Mode="In" />
+    <Parameter Name="parent_id" Type="int" Mode="In" />
+    <Parameter Name="created_by" Type="varchar" Mode="In" />
+    <Parameter Name="created_date" Type="datetime" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_access_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="access_name" Type="varchar" Mode="In" />
+    <Parameter Name="parent_id" Type="int" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="access_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_get_access_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_get_access_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="access_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_get_access_children" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parent_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_get_access_parent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_get_menu_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menu_id" Type="int" Mode="In" />
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_get_menu_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_get_menu_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menu_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_get_menu_children" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parent_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_get_menu_parent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_get_order_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_get_order_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="order_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_get_order_report_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="start_from" Type="datetime" Mode="In" />
+    <Parameter Name="end_to" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_get_uga_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="access_id" Type="int" Mode="In" />
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_get_uga_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="access_name" Type="varchar" Mode="In" />
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_get_ugm_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menu_id" Type="int" Mode="In" />
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_get_ugm_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_get_ui_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_get_ui_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ui_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_get_user_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_get_user_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_get_user_by_username_or_user_email" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_get_user_group_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_get_user_group_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_group_id" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_login_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_email" Type="varchar" Mode="In" />
+    <Parameter Name="user_password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_menu_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menu_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_menu_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menu_name" Type="varchar" Mode="In" />
+    <Parameter Name="menu_page" Type="varchar" Mode="In" />
+    <Parameter Name="parent_id" Type="int" Mode="In" />
+    <Parameter Name="icon" Type="varchar" Mode="In" />
+    <Parameter Name="created_date" Type="datetime" Mode="In" />
+    <Parameter Name="created_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_menu_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menu_name" Type="int" Mode="In" />
+    <Parameter Name="menu_page" Type="varchar" Mode="In" />
+    <Parameter Name="parent_id" Type="int" Mode="In" />
+    <Parameter Name="icon" Type="varchar" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="menu_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_order_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="order_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_order_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="full_name" Type="varchar" Mode="In" />
+    <Parameter Name="address" Type="text" Mode="In" />
+    <Parameter Name="zip_code" Type="varchar" Mode="In" />
+    <Parameter Name="area" Type="varchar" Mode="In" />
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="mobile_phone" Type="varchar" Mode="In" />
+    <Parameter Name="id_card_number" Type="varchar" Mode="In" />
+    <Parameter Name="birth_date" Type="datetime" Mode="In" />
+    <Parameter Name="height" Type="decimal" Mode="In" />
+    <Parameter Name="weight" Type="decimal" Mode="In" />
+    <Parameter Name="gender" Type="varchar" Mode="In" />
+    <Parameter Name="marriage_status" Type="varchar" Mode="In" />
+    <Parameter Name="haji" Type="int" Mode="In" />
+    <Parameter Name="pewaris_name" Type="varchar" Mode="In" />
+    <Parameter Name="pewaris_id_card_number" Type="varchar" Mode="In" />
+    <Parameter Name="pewaris_relation" Type="varchar" Mode="In" />
+    <Parameter Name="pewaris_gender" Type="varchar" Mode="In" />
+    <Parameter Name="pewaris_phone" Type="varchar" Mode="In" />
+    <Parameter Name="pewaris_payment_for" Type="varchar" Mode="In" />
+    <Parameter Name="money" Type="decimal" Mode="In" />
+    <Parameter Name="check_number" Type="varchar" Mode="In" />
+    <Parameter Name="order_name" Type="varchar" Mode="In" />
+    <Parameter Name="order_tarikh" Type="datetime" Mode="In" />
+    <Parameter Name="order_kp_number" Type="varchar" Mode="In" />
+    <Parameter Name="wakil_name" Type="varchar" Mode="In" />
+    <Parameter Name="wakil_tarikh" Type="datetime" Mode="In" />
+    <Parameter Name="wakil_code" Type="varchar" Mode="In" />
+    <Parameter Name="created_by" Type="varchar" Mode="In" />
+    <Parameter Name="created_date" Type="datetime" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_order_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="full_name" Type="varchar" Mode="In" />
+    <Parameter Name="address" Type="text" Mode="In" />
+    <Parameter Name="zip_code" Type="varchar" Mode="In" />
+    <Parameter Name="area" Type="varchar" Mode="In" />
+    <Parameter Name="country" Type="varchar" Mode="In" />
+    <Parameter Name="phone" Type="varchar" Mode="In" />
+    <Parameter Name="mobile_phone" Type="varchar" Mode="In" />
+    <Parameter Name="id_card_number" Type="varchar" Mode="In" />
+    <Parameter Name="birth_date" Type="datetime" Mode="In" />
+    <Parameter Name="height" Type="decimal" Mode="In" />
+    <Parameter Name="weight" Type="decimal" Mode="In" />
+    <Parameter Name="gender" Type="varchar" Mode="In" />
+    <Parameter Name="marriage_status" Type="varchar" Mode="In" />
+    <Parameter Name="haji" Type="int" Mode="In" />
+    <Parameter Name="pewaris_name" Type="varchar" Mode="In" />
+    <Parameter Name="pewaris_id_card_number" Type="varchar" Mode="In" />
+    <Parameter Name="pewaris_relation" Type="varchar" Mode="In" />
+    <Parameter Name="pewaris_gender" Type="varchar" Mode="In" />
+    <Parameter Name="pewaris_phone" Type="varchar" Mode="In" />
+    <Parameter Name="pewaris_payment_for" Type="varchar" Mode="In" />
+    <Parameter Name="money" Type="decimal" Mode="In" />
+    <Parameter Name="check_number" Type="varchar" Mode="In" />
+    <Parameter Name="order_name" Type="varchar" Mode="In" />
+    <Parameter Name="order_tarikh" Type="datetime" Mode="In" />
+    <Parameter Name="order_kp_number" Type="varchar" Mode="In" />
+    <Parameter Name="wakil_name" Type="varchar" Mode="In" />
+    <Parameter Name="wakil_tarikh" Type="datetime" Mode="In" />
+    <Parameter Name="wakil_code" Type="varchar" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="order_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_uga_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="access_id" Type="int" Mode="In" />
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_uga_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="access_id" Type="int" Mode="In" />
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+    <Parameter Name="created_by" Type="varchar" Mode="In" />
+    <Parameter Name="created_date" Type="datetime" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_ugm_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menu_id" Type="int" Mode="In" />
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ugm_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="menu_id" Type="int" Mode="In" />
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+    <Parameter Name="created_date" Type="datetime" Mode="In" />
+    <Parameter Name="created_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ui_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ui_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_ui_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_id" Type="int" Mode="In" />
+    <Parameter Name="ui_jabatan" Type="varchar" Mode="In" />
+    <Parameter Name="ui_nip" Type="varchar" Mode="In" />
+    <Parameter Name="ui_grade" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="created_date" Type="datetime" Mode="In" />
+    <Parameter Name="created_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_ui_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_id" Type="int" Mode="In" />
+    <Parameter Name="ui_jabatan" Type="varchar" Mode="In" />
+    <Parameter Name="ui_nip" Type="varchar" Mode="In" />
+    <Parameter Name="ui_grade" Type="varchar" Mode="In" />
+    <Parameter Name="status" Type="int" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="ui_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_user_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_user_group_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_user_group_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_group_name" Type="varchar" Mode="In" />
+    <Parameter Name="created_by" Type="varchar" Mode="In" />
+    <Parameter Name="created_date" Type="datetime" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_user_group_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_group_name" Type="int" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_user_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_name" Type="varchar" Mode="In" />
+    <Parameter Name="user_email" Type="varchar" Mode="In" />
+    <Parameter Name="user_password" Type="varchar" Mode="In" />
+    <Parameter Name="user_first_name" Type="varchar" Mode="In" />
+    <Parameter Name="user_last_name" Type="varchar" Mode="In" />
+    <Parameter Name="user_last_login" Type="datetime" Mode="In" />
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+    <Parameter Name="user_birth_place" Type="varchar" Mode="In" />
+    <Parameter Name="user_birth_date" Type="datetime" Mode="In" />
+    <Parameter Name="user_address" Type="text" Mode="In" />
+    <Parameter Name="user_ktp_number" Type="varchar" Mode="In" />
+    <Parameter Name="user_phone_number" Type="varchar" Mode="In" />
+    <Parameter Name="user_ktp_file" Type="varchar" Mode="In" />
+    <Parameter Name="user_photo_file" Type="varchar" Mode="In" />
+    <Parameter Name="user_gender" Type="varchar" Mode="In" />
+    <Parameter Name="user_marital_status" Type="varchar" Mode="In" />
+    <Parameter Name="created_by" Type="varchar" Mode="In" />
+    <Parameter Name="created_date" Type="datetime" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_user_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_first_name" Type="varchar" Mode="In" />
+    <Parameter Name="user_last_name" Type="varchar" Mode="In" />
+    <Parameter Name="user_birth_place" Type="varchar" Mode="In" />
+    <Parameter Name="user_birth_date" Type="datetime" Mode="In" />
+    <Parameter Name="user_address" Type="text" Mode="In" />
+    <Parameter Name="user_ktp_number" Type="varchar" Mode="In" />
+    <Parameter Name="user_phone_number" Type="varchar" Mode="In" />
+    <Parameter Name="user_ktp_file" Type="varchar" Mode="In" />
+    <Parameter Name="user_photo_file" Type="varchar" Mode="In" />
+    <Parameter Name="user_gender" Type="varchar" Mode="In" />
+    <Parameter Name="user_marital_status" Type="varchar" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_user_update_group" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_group_id" Type="int" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_user_update_last_login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_last_login" Type="datetime" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="user_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_user_update_password" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="user_password" Type="varchar" Mode="In" />
+    <Parameter Name="updated_by" Type="varchar" Mode="In" />
+    <Parameter Name="updated_date" Type="datetime" Mode="In" />
+    <Parameter Name="user_id" Type="int" Mode="In" />
+  </Function>
+</Schema>

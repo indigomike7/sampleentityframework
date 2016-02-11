@@ -1,0 +1,1390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="nsframeworkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="nsframeworkModelStoreContainer">
+          <EntitySet Name="access_settings" EntityType="nsframeworkModel.Store.access_settings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="menu" EntityType="nsframeworkModel.Store.menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="t_Bank_data" EntityType="nsframeworkModel.Store.t_Bank_data" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="t_dmms_branch" EntityType="nsframeworkModel.Store.t_dmms_branch" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="t_dmms_master" EntityType="nsframeworkModel.Store.t_dmms_master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="t_Insurance_data" EntityType="nsframeworkModel.Store.t_Insurance_data" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="t_order" EntityType="nsframeworkModel.Store.t_order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="user" EntityType="nsframeworkModel.Store.user" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="user_group" EntityType="nsframeworkModel.Store.user_group" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="user_group_access" EntityType="nsframeworkModel.Store.user_group_access" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="user_group_menu" EntityType="nsframeworkModel.Store.user_group_menu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="user_internal" EntityType="nsframeworkModel.Store.user_internal" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="access_settings">
+          <Key>
+            <PropertyRef Name="access_id" />
+          </Key>
+          <Property Name="access_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="access_name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="menu_id" />
+          </Key>
+          <Property Name="menu_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="menu_name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="menu_page" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="parent_id" Type="int" Nullable="false" />
+          <Property Name="icon" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="t_Bank_data">
+          <Key>
+            <PropertyRef Name="bd_id" />
+            <PropertyRef Name="policy_no" />
+          </Key>
+          <Property Name="bd_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="policy_no" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="bank_ref_number" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="nric" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="old_ic" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="participant_name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="customer_address_1" Type="text" Nullable="false" />
+          <Property Name="customer_address_2" Type="text" />
+          <Property Name="customer_address_3" Type="text" />
+          <Property Name="customer_address_4" Type="text" />
+          <Property Name="customer_address_5" Type="text" />
+          <Property Name="customer_post_code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="property_type" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="property_address" Type="text" Nullable="false" />
+          <Property Name="property_address_1" Type="text" />
+          <Property Name="property_address_2" Type="text" />
+          <Property Name="property_address_3" Type="text" />
+          <Property Name="property_address_4" Type="text" />
+          <Property Name="property_post_code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="risk_type" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="policy_effective_date" Type="datetime" Nullable="false" />
+          <Property Name="policy_expired_date" Type="datetime" Nullable="false" />
+          <Property Name="sum_covered" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="t_dmms_branch">
+          <Key>
+            <PropertyRef Name="BRANCH_CODE" />
+            <PropertyRef Name="BRANCH_NAME" />
+          </Key>
+          <Property Name="BRANCH_CODE" Type="varchar" Nullable="false" MaxLength="2" />
+          <Property Name="BRANCH_NAME" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="BRANCH_ADDRESS" Type="varchar" MaxLength="800" />
+          <Property Name="TIMESTAMP" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="t_dmms_master">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BANK_REF_NO" Type="varchar" MaxLength="300" />
+          <Property Name="NEW_NRIC" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="OLD_NRIC" Type="varchar" MaxLength="100" />
+          <Property Name="CUSTOMER_NAME" Type="varchar" MaxLength="500" />
+          <Property Name="CUSTOMER_ADD2" Type="text" />
+          <Property Name="CUSTOMER_ADD3" Type="text" />
+          <Property Name="CUSTOMER_ADD4" Type="text" />
+          <Property Name="CUSTOMER_ADD5" Type="text" />
+          <Property Name="CUSTOMER_CITY" Type="varchar" MaxLength="300" />
+          <Property Name="CUSTOMER_POSTCODE" Type="varchar" MaxLength="300" />
+          <Property Name="PROPERTY_TYPE" Type="varchar" MaxLength="300" />
+          <Property Name="PROPERTY_ADD1" Type="text" Nullable="false" />
+          <Property Name="PROPERTY_ADD2" Type="text" />
+          <Property Name="PROPERTY_ADD3" Type="text" />
+          <Property Name="PROPERTY_ADD4" Type="text" />
+          <Property Name="PROPERTY_CITY" Type="varchar" MaxLength="300" />
+          <Property Name="PROPERTY_POSCODE" Type="varchar" MaxLength="300" />
+          <Property Name="INSURANCE_TYPE" Type="varchar" MaxLength="300" />
+          <Property Name="CERT_START_DATE" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="CERT_END_DATE" Type="varchar" MaxLength="300" />
+          <Property Name="SUM_INSURED_AMOUNT" Type="varchar" MaxLength="300" />
+          <Property Name="CERTIFICATE_NO" Type="varchar" MaxLength="300" />
+          <Property Name="BANK_STAFF" Type="varchar" MaxLength="300" />
+          <Property Name="ACC_NO" Type="varchar" MaxLength="300" />
+          <Property Name="TRITON_ACC_NO" Type="varchar" MaxLength="300" />
+          <Property Name="BRANCH_CODE" Type="varchar" MaxLength="100" />
+          <Property Name="FACILTY_TYPE" Type="varchar" MaxLength="300" />
+          <Property Name="APPROVED_LIMIT" Type="varchar" MaxLength="300" />
+          <Property Name="APPROVED_DATE" Type="varchar" MaxLength="300" />
+          <Property Name="BAL_OUTSTANDING" Type="varchar" MaxLength="300" />
+          <Property Name="COST_OUTSTANDING" Type="varchar" MaxLength="300" />
+          <Property Name="PRINCIPAL_OUTSTANDING" Type="varchar" MaxLength="300" />
+          <Property Name="UEI_OUTSTANDING" Type="varchar" MaxLength="300" />
+          <Property Name="MONTH_ARREARS" Type="varchar" MaxLength="300" />
+          <Property Name="CREDIT_STATUS" Type="varchar" MaxLength="300" />
+          <Property Name="CREDIT_STAT_CHG_DATE" Type="varchar" MaxLength="300" />
+          <Property Name="NPF_STATUS" Type="varchar" MaxLength="300" />
+          <Property Name="REPORTING_BALANCE" Type="varchar" MaxLength="300" />
+          <Property Name="INCOME_ARREARS" Type="varchar" MaxLength="300" />
+          <Property Name="CURR_BAL_OUTSTANDING" Type="varchar" MaxLength="300" />
+          <Property Name="COLLATERAL_REFNO" Type="varchar" MaxLength="300" />
+          <Property Name="CLAIM_TYPE" Type="varchar" MaxLength="300" />
+          <Property Name="TITLE_NO" Type="varchar" MaxLength="300" />
+          <Property Name="LAND_OFFICE" Type="varchar" MaxLength="300" />
+          <Property Name="LOT_NO" Type="varchar" MaxLength="300" />
+          <Property Name="PROPERTY_DISTRICT" Type="varchar" MaxLength="300" />
+          <Property Name="MUKIM" Type="varchar" MaxLength="300" />
+          <Property Name="SECURITY_VALUE" Type="varchar" MaxLength="300" />
+          <Property Name="PROPERTY_DESC" Type="varchar" MaxLength="300" />
+          <Property Name="PROPERTY_OWNER1" Type="varchar" MaxLength="300" />
+          <Property Name="PROPERTY_OWNER2" Type="varchar" MaxLength="300" />
+          <Property Name="INSURANCE_COMPANY" Type="varchar" MaxLength="300" />
+          <Property Name="POLICY_NO" Type="varchar" MaxLength="300" />
+          <Property Name="COVERAGE_TYPE" Type="varchar" MaxLength="300" />
+          <Property Name="PARTICIPANT_NAME" Type="varchar" MaxLength="300" />
+          <Property Name="RISK_ADD1" Type="text" />
+          <Property Name="RISK_ADD2" Type="text" />
+          <Property Name="RISK_ADD3" Type="text" />
+          <Property Name="RISK_ADD4" Type="text" />
+          <Property Name="RISK_ADD5" Type="varchar" MaxLength="300" />
+          <Property Name="RISK_POSTCODE" Type="varchar" MaxLength="300" />
+          <Property Name="RISK_STATE_CODE" Type="varchar" MaxLength="300" />
+          <Property Name="PREMIUM_AMOUNT" Type="varchar" MaxLength="300" />
+          <Property Name="INSURANCE_LAST_MODIFIED_DATE" Type="varchar" MaxLength="300" />
+          <Property Name="STATUS" Type="varchar" MaxLength="1" />
+          <Property Name="TIMESTAMP2" Type="varchar" MaxLength="300" />
+          <Property Name="CONTRIBUTION_TO_BE_PAID_BY_CUST" Type="varchar" MaxLength="300" />
+          <Property Name="CONTRIBUTION_TO_BE_PAID_BY_BANK" Type="varchar" MaxLength="300" />
+          <Property Name="CONTRIBUTION_TO_BE_PAID_BY_BROKER" Type="varchar" MaxLength="300" />
+          <Property Name="INSURANCE_LAST_MOD_DATE" Type="varchar" MaxLength="300" />
+          <Property Name="CONTRIBUTION" Type="varchar" MaxLength="300" />
+          <Property Name="COMISSION" Type="varchar" MaxLength="300" />
+          <Property Name="STAMP_DUTY" Type="varchar" MaxLength="300" />
+          <Property Name="POLICE_OR_ARMY_NO" Type="varchar" MaxLength="300" />
+          <Property Name="PASSPORT_NO" Type="varchar" MaxLength="300" />
+          <Property Name="BRANCHES" Type="varchar" MaxLength="300" />
+          <Property Name="FileName" Type="varchar" MaxLength="300" />
+          <Property Name="UserName" Type="varchar" MaxLength="300" />
+          <Property Name="SETTLEMENT_DATE" Type="smalldatetime" />
+          <Property Name="REMARKS" Type="varchar" MaxLength="300" />
+          <Property Name="ADD_NEW_CUSTOMER_DATE" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="t_Insurance_data">
+          <Key>
+            <PropertyRef Name="id_id" />
+          </Key>
+          <Property Name="id_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="policy_no" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ic_breg_no" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="customer_name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="bank_staff" Type="varchar" MaxLength="255" />
+          <Property Name="address_1" Type="text" Nullable="false" />
+          <Property Name="address_2" Type="text" />
+          <Property Name="address_3" Type="text" />
+          <Property Name="post_code" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="city" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="account_no" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="triton_account_no" Type="varchar" MaxLength="100" />
+          <Property Name="branch_code" Type="varchar" MaxLength="100" />
+          <Property Name="facility_type" Type="varchar" MaxLength="100" />
+          <Property Name="approved_limit" Type="varchar" MaxLength="300" />
+          <Property Name="approved_date" Type="datetime" />
+          <Property Name="balance_outstanding" Type="varchar" MaxLength="300" />
+          <Property Name="cost_outstanding" Type="varchar" MaxLength="300" />
+          <Property Name="principal_outstanding" Type="varchar" MaxLength="300" />
+          <Property Name="uei_outstanding" Type="varchar" MaxLength="300" />
+          <Property Name="month_arrears" Type="varchar" MaxLength="300" />
+          <Property Name="credit_status" Type="varchar" MaxLength="300" />
+          <Property Name="credit_stat_change_date" Type="datetime" />
+          <Property Name="npf_status" Type="varchar" MaxLength="300" />
+          <Property Name="reporting_balance" Type="varchar" MaxLength="300" />
+          <Property Name="income_arrears" Type="varchar" MaxLength="300" />
+          <Property Name="curr_balance_outstanding" Type="varchar" MaxLength="300" />
+          <Property Name="collateral_ref_number" Type="varchar" MaxLength="300" />
+          <Property Name="claim_type" Type="varchar" MaxLength="300" />
+          <Property Name="property_type" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="title_no" Type="varchar" MaxLength="300" />
+          <Property Name="land_office" Type="varchar" MaxLength="300" />
+          <Property Name="lot_number" Type="varchar" MaxLength="300" />
+          <Property Name="property_address_1" Type="text" />
+          <Property Name="property_address_2" Type="text" />
+          <Property Name="property_address_3" Type="text" />
+          <Property Name="property_district" Type="varchar" MaxLength="300" />
+          <Property Name="mukim" Type="varchar" MaxLength="300" />
+          <Property Name="property_city" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="property_post_code" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="security_value" Type="varchar" MaxLength="300" />
+          <Property Name="property_desc" Type="text" />
+          <Property Name="property_owner_1" Type="varchar" MaxLength="300" />
+          <Property Name="property_owner_2" Type="varchar" MaxLength="300" />
+          <Property Name="insurance_company" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="insurance_type" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="coverage_type" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="participant_name" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="risk_address_1" Type="text" Nullable="false" />
+          <Property Name="risk_address_2" Type="text" />
+          <Property Name="risk_address_3" Type="text" />
+          <Property Name="risk_post_code" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="risk_city" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="risk_state_code" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="risk_country_code" Type="varchar" MaxLength="300" />
+          <Property Name="start_date" Type="datetime" Nullable="false" />
+          <Property Name="end_date" Type="datetime" Nullable="false" />
+          <Property Name="premium_amt" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="sum_insured_amt" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="insurance_last_modified_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="t_order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="full_name" Type="varchar" Nullable="false" />
+          <Property Name="address" Type="text" Nullable="false" />
+          <Property Name="zip_code" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="area" Type="varchar" Nullable="false" />
+          <Property Name="country" Type="varchar" Nullable="false" />
+          <Property Name="phone" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="mobile_phone" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="id_card_number" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="birth_date" Type="datetime" Nullable="false" />
+          <Property Name="height" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="weight" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="gender" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="marriage_status" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="haji" Type="int" Nullable="false" />
+          <Property Name="pewaris_name" Type="varchar" Nullable="false" />
+          <Property Name="pewaris_id_card_number" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="pewaris_relation" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="pewaris_gender" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="pewaris_phone" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="pewaris_payment_for" Type="varchar" Nullable="false" />
+          <Property Name="order_money" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="check_number" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="order_name" Type="varchar" Nullable="false" />
+          <Property Name="order_tarikh" Type="datetime" Nullable="false" />
+          <Property Name="order_kp_number" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="wakil_name" Type="varchar" Nullable="false" />
+          <Property Name="wakil_tarikh" Type="datetime" Nullable="false" />
+          <Property Name="wakil_code" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="user_email" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="user_password" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_first_name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_last_name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_last_login" Type="datetime" Nullable="false" />
+          <Property Name="user_group_id" Type="int" Nullable="false" />
+          <Property Name="user_birth_place" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_birth_date" Type="datetime" Nullable="false" />
+          <Property Name="user_address" Type="text" Nullable="false" />
+          <Property Name="user_social_number" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_phone_number" Type="varchar" MaxLength="100" />
+          <Property Name="user_id_card_file" Type="varchar" MaxLength="255" />
+          <Property Name="user_photo_file" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="user_gender" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="user_marital_status" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_group">
+          <Key>
+            <PropertyRef Name="user_group_id" />
+          </Key>
+          <Property Name="user_group_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_group_name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="user_group_access">
+          <Key>
+            <PropertyRef Name="uga_id" />
+          </Key>
+          <Property Name="uga_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="access_id" Type="int" Nullable="false" />
+          <Property Name="user_group_id" Type="int" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="user_group_menu">
+          <Key>
+            <PropertyRef Name="ugm_id" />
+          </Key>
+          <Property Name="ugm_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_group_id" Type="int" Nullable="false" />
+          <Property Name="menu_id" Type="int" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="user_internal">
+          <Key>
+            <PropertyRef Name="ui_id" />
+          </Key>
+          <Property Name="ui_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="ui_nip" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ui_jabatan" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ui_grade" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="status" Type="int" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="created_by" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="updated_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <Function Name="get_menu_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="menu_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_access_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="access_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_access_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="access_name" Type="varchar" Mode="In" />
+          <Parameter Name="parent_id" Type="int" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="created_date" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_access_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="access_name" Type="varchar" Mode="In" />
+          <Parameter Name="parent_id" Type="int" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="access_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_access_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_access_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="access_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_get_access_children" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parent_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_access_parent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_menu_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="menu_id" Type="int" Mode="In" />
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_menu_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_menu_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="menu_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_get_menu_children" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parent_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_menu_parent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_order_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_order_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="order_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_order_report_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="start_from" Type="datetime" Mode="In" />
+          <Parameter Name="end_to" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_get_uga_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="access_id" Type="int" Mode="In" />
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_uga_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="access_name" Type="varchar" Mode="In" />
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_ugm_1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="menu_id" Type="int" Mode="In" />
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_ugm_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_ui_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_ui_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ui_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_get_user_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_user_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_get_user_by_username_or_user_email" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_get_user_group_all" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_get_user_group_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_group_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_login_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_email" Type="varchar" Mode="In" />
+          <Parameter Name="user_password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_menu_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="menu_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_menu_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="menu_name" Type="varchar" Mode="In" />
+          <Parameter Name="menu_page" Type="varchar" Mode="In" />
+          <Parameter Name="parent_id" Type="int" Mode="In" />
+          <Parameter Name="icon" Type="varchar" Mode="In" />
+          <Parameter Name="created_date" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_menu_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="menu_name" Type="int" Mode="In" />
+          <Parameter Name="menu_page" Type="varchar" Mode="In" />
+          <Parameter Name="parent_id" Type="int" Mode="In" />
+          <Parameter Name="icon" Type="varchar" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="menu_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_order_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="order_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_order_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="full_name" Type="varchar" Mode="In" />
+          <Parameter Name="address" Type="text" Mode="In" />
+          <Parameter Name="zip_code" Type="varchar" Mode="In" />
+          <Parameter Name="area" Type="varchar" Mode="In" />
+          <Parameter Name="country" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="mobile_phone" Type="varchar" Mode="In" />
+          <Parameter Name="id_card_number" Type="varchar" Mode="In" />
+          <Parameter Name="birth_date" Type="datetime" Mode="In" />
+          <Parameter Name="height" Type="decimal" Mode="In" />
+          <Parameter Name="weight" Type="decimal" Mode="In" />
+          <Parameter Name="gender" Type="varchar" Mode="In" />
+          <Parameter Name="marriage_status" Type="varchar" Mode="In" />
+          <Parameter Name="haji" Type="int" Mode="In" />
+          <Parameter Name="pewaris_name" Type="varchar" Mode="In" />
+          <Parameter Name="pewaris_id_card_number" Type="varchar" Mode="In" />
+          <Parameter Name="pewaris_relation" Type="varchar" Mode="In" />
+          <Parameter Name="pewaris_gender" Type="varchar" Mode="In" />
+          <Parameter Name="pewaris_phone" Type="varchar" Mode="In" />
+          <Parameter Name="pewaris_payment_for" Type="varchar" Mode="In" />
+          <Parameter Name="money" Type="decimal" Mode="In" />
+          <Parameter Name="check_number" Type="varchar" Mode="In" />
+          <Parameter Name="order_name" Type="varchar" Mode="In" />
+          <Parameter Name="order_tarikh" Type="datetime" Mode="In" />
+          <Parameter Name="order_kp_number" Type="varchar" Mode="In" />
+          <Parameter Name="wakil_name" Type="varchar" Mode="In" />
+          <Parameter Name="wakil_tarikh" Type="datetime" Mode="In" />
+          <Parameter Name="wakil_code" Type="varchar" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="created_date" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_order_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="full_name" Type="varchar" Mode="In" />
+          <Parameter Name="address" Type="text" Mode="In" />
+          <Parameter Name="zip_code" Type="varchar" Mode="In" />
+          <Parameter Name="area" Type="varchar" Mode="In" />
+          <Parameter Name="country" Type="varchar" Mode="In" />
+          <Parameter Name="phone" Type="varchar" Mode="In" />
+          <Parameter Name="mobile_phone" Type="varchar" Mode="In" />
+          <Parameter Name="id_card_number" Type="varchar" Mode="In" />
+          <Parameter Name="birth_date" Type="datetime" Mode="In" />
+          <Parameter Name="height" Type="decimal" Mode="In" />
+          <Parameter Name="weight" Type="decimal" Mode="In" />
+          <Parameter Name="gender" Type="varchar" Mode="In" />
+          <Parameter Name="marriage_status" Type="varchar" Mode="In" />
+          <Parameter Name="haji" Type="int" Mode="In" />
+          <Parameter Name="pewaris_name" Type="varchar" Mode="In" />
+          <Parameter Name="pewaris_id_card_number" Type="varchar" Mode="In" />
+          <Parameter Name="pewaris_relation" Type="varchar" Mode="In" />
+          <Parameter Name="pewaris_gender" Type="varchar" Mode="In" />
+          <Parameter Name="pewaris_phone" Type="varchar" Mode="In" />
+          <Parameter Name="pewaris_payment_for" Type="varchar" Mode="In" />
+          <Parameter Name="money" Type="decimal" Mode="In" />
+          <Parameter Name="check_number" Type="varchar" Mode="In" />
+          <Parameter Name="order_name" Type="varchar" Mode="In" />
+          <Parameter Name="order_tarikh" Type="datetime" Mode="In" />
+          <Parameter Name="order_kp_number" Type="varchar" Mode="In" />
+          <Parameter Name="wakil_name" Type="varchar" Mode="In" />
+          <Parameter Name="wakil_tarikh" Type="datetime" Mode="In" />
+          <Parameter Name="wakil_code" Type="varchar" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="order_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_uga_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="access_id" Type="int" Mode="In" />
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_uga_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="access_id" Type="int" Mode="In" />
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="created_date" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_ugm_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="menu_id" Type="int" Mode="In" />
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ugm_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="menu_id" Type="int" Mode="In" />
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+          <Parameter Name="created_date" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ui_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ui_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ui_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="ui_jabatan" Type="varchar" Mode="In" />
+          <Parameter Name="ui_nip" Type="varchar" Mode="In" />
+          <Parameter Name="ui_grade" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+          <Parameter Name="created_date" Type="datetime" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ui_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="ui_jabatan" Type="varchar" Mode="In" />
+          <Parameter Name="ui_nip" Type="varchar" Mode="In" />
+          <Parameter Name="ui_grade" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="int" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="ui_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_user_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_user_group_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_user_group_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_group_name" Type="varchar" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="created_date" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_user_group_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_group_name" Type="int" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_user_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_name" Type="varchar" Mode="In" />
+          <Parameter Name="user_email" Type="varchar" Mode="In" />
+          <Parameter Name="user_password" Type="varchar" Mode="In" />
+          <Parameter Name="user_first_name" Type="varchar" Mode="In" />
+          <Parameter Name="user_last_name" Type="varchar" Mode="In" />
+          <Parameter Name="user_last_login" Type="datetime" Mode="In" />
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+          <Parameter Name="user_birth_place" Type="varchar" Mode="In" />
+          <Parameter Name="user_birth_date" Type="datetime" Mode="In" />
+          <Parameter Name="user_address" Type="text" Mode="In" />
+          <Parameter Name="user_ktp_number" Type="varchar" Mode="In" />
+          <Parameter Name="user_phone_number" Type="varchar" Mode="In" />
+          <Parameter Name="user_ktp_file" Type="varchar" Mode="In" />
+          <Parameter Name="user_photo_file" Type="varchar" Mode="In" />
+          <Parameter Name="user_gender" Type="varchar" Mode="In" />
+          <Parameter Name="user_marital_status" Type="varchar" Mode="In" />
+          <Parameter Name="created_by" Type="varchar" Mode="In" />
+          <Parameter Name="created_date" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_user_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_first_name" Type="varchar" Mode="In" />
+          <Parameter Name="user_last_name" Type="varchar" Mode="In" />
+          <Parameter Name="user_birth_place" Type="varchar" Mode="In" />
+          <Parameter Name="user_birth_date" Type="datetime" Mode="In" />
+          <Parameter Name="user_address" Type="text" Mode="In" />
+          <Parameter Name="user_ktp_number" Type="varchar" Mode="In" />
+          <Parameter Name="user_phone_number" Type="varchar" Mode="In" />
+          <Parameter Name="user_ktp_file" Type="varchar" Mode="In" />
+          <Parameter Name="user_photo_file" Type="varchar" Mode="In" />
+          <Parameter Name="user_gender" Type="varchar" Mode="In" />
+          <Parameter Name="user_marital_status" Type="varchar" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_user_update_group" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_group_id" Type="int" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_user_update_last_login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_last_login" Type="datetime" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_user_update_password" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="user_password" Type="varchar" Mode="In" />
+          <Parameter Name="updated_by" Type="varchar" Mode="In" />
+          <Parameter Name="updated_date" Type="datetime" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="nsframeworkModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="access_settings" EntityType="nsframeworkModel.access_settings" />
+          <EntitySet Name="menus" EntityType="nsframeworkModel.menu" />
+          <EntitySet Name="t_Bank_data" EntityType="nsframeworkModel.t_Bank_data" />
+          <EntitySet Name="t_dmms_branch" EntityType="nsframeworkModel.t_dmms_branch" />
+          <EntitySet Name="t_dmms_master" EntityType="nsframeworkModel.t_dmms_master" />
+          <EntitySet Name="t_Insurance_data" EntityType="nsframeworkModel.t_Insurance_data" />
+          <EntitySet Name="t_order" EntityType="nsframeworkModel.t_order" />
+          <EntitySet Name="users" EntityType="nsframeworkModel.user" />
+          <EntitySet Name="user_group" EntityType="nsframeworkModel.user_group" />
+          <EntitySet Name="user_group_access" EntityType="nsframeworkModel.user_group_access" />
+          <EntitySet Name="user_group_menu" EntityType="nsframeworkModel.user_group_menu" />
+          <EntitySet Name="user_internal" EntityType="nsframeworkModel.user_internal" />
+          <FunctionImport Name="sp_login_user" EntitySet="users" ReturnType="Collection(nsframeworkModel.user)">
+            <Parameter Name="user_email" Mode="In" Type="String" />
+            <Parameter Name="user_password" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="access_settings">
+          <Key>
+            <PropertyRef Name="access_id" />
+          </Key>
+          <Property Name="access_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="access_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" />
+          <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="menu">
+          <Key>
+            <PropertyRef Name="menu_id" />
+          </Key>
+          <Property Name="menu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menu_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="menu_page" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="parent_id" Type="Int32" Nullable="false" />
+          <Property Name="icon" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" />
+          <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="t_Bank_data">
+          <Key>
+            <PropertyRef Name="bd_id" />
+            <PropertyRef Name="policy_no" />
+          </Key>
+          <Property Name="bd_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="policy_no" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="bank_ref_number" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="nric" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="old_ic" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="participant_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="customer_address_1" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="customer_address_2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="customer_address_3" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="customer_address_4" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="customer_address_5" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="customer_post_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="property_type" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="property_address" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="property_address_1" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="property_address_2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="property_address_3" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="property_address_4" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="property_post_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="risk_type" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="policy_effective_date" Type="DateTime" Nullable="false" />
+          <Property Name="policy_expired_date" Type="DateTime" Nullable="false" />
+          <Property Name="sum_covered" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="t_dmms_branch">
+          <Key>
+            <PropertyRef Name="BRANCH_CODE" />
+            <PropertyRef Name="BRANCH_NAME" />
+          </Key>
+          <Property Name="BRANCH_CODE" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="false" />
+          <Property Name="BRANCH_NAME" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BRANCH_ADDRESS" Type="String" MaxLength="800" Unicode="false" FixedLength="false" />
+          <Property Name="TIMESTAMP" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="t_dmms_master">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BANK_REF_NO" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="NEW_NRIC" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="OLD_NRIC" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CUSTOMER_NAME" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="CUSTOMER_ADD2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CUSTOMER_ADD3" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CUSTOMER_ADD4" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CUSTOMER_ADD5" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CUSTOMER_CITY" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CUSTOMER_POSTCODE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_TYPE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_ADD1" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_ADD2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_ADD3" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_ADD4" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_CITY" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_POSCODE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="INSURANCE_TYPE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CERT_START_DATE" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CERT_END_DATE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="SUM_INSURED_AMOUNT" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CERTIFICATE_NO" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="BANK_STAFF" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="ACC_NO" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="TRITON_ACC_NO" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="BRANCH_CODE" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="FACILTY_TYPE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="APPROVED_LIMIT" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="APPROVED_DATE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="BAL_OUTSTANDING" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="COST_OUTSTANDING" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PRINCIPAL_OUTSTANDING" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="UEI_OUTSTANDING" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="MONTH_ARREARS" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CREDIT_STATUS" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CREDIT_STAT_CHG_DATE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="NPF_STATUS" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="REPORTING_BALANCE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="INCOME_ARREARS" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CURR_BAL_OUTSTANDING" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="COLLATERAL_REFNO" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CLAIM_TYPE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="TITLE_NO" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="LAND_OFFICE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="LOT_NO" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_DISTRICT" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="MUKIM" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="SECURITY_VALUE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_DESC" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_OWNER1" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PROPERTY_OWNER2" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="INSURANCE_COMPANY" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="POLICY_NO" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="COVERAGE_TYPE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PARTICIPANT_NAME" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="RISK_ADD1" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="RISK_ADD2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="RISK_ADD3" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="RISK_ADD4" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="RISK_ADD5" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="RISK_POSTCODE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="RISK_STATE_CODE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PREMIUM_AMOUNT" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="INSURANCE_LAST_MODIFIED_DATE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="STATUS" Type="String" MaxLength="1" Unicode="false" FixedLength="false" />
+          <Property Name="TIMESTAMP2" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CONTRIBUTION_TO_BE_PAID_BY_CUST" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CONTRIBUTION_TO_BE_PAID_BY_BANK" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CONTRIBUTION_TO_BE_PAID_BY_BROKER" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="INSURANCE_LAST_MOD_DATE" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CONTRIBUTION" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="COMISSION" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="STAMP_DUTY" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="POLICE_OR_ARMY_NO" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="PASSPORT_NO" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="BRANCHES" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="FileName" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="UserName" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="SETTLEMENT_DATE" Type="DateTime" />
+          <Property Name="REMARKS" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="ADD_NEW_CUSTOMER_DATE" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="t_Insurance_data">
+          <Key>
+            <PropertyRef Name="id_id" />
+          </Key>
+          <Property Name="id_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="policy_no" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ic_breg_no" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="customer_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="bank_staff" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="address_1" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="address_2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="address_3" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="post_code" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="account_no" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="triton_account_no" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="branch_code" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="facility_type" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="approved_limit" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="approved_date" Type="DateTime" />
+          <Property Name="balance_outstanding" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="cost_outstanding" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="principal_outstanding" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="uei_outstanding" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="month_arrears" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="credit_status" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="credit_stat_change_date" Type="DateTime" />
+          <Property Name="npf_status" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="reporting_balance" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="income_arrears" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="curr_balance_outstanding" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="collateral_ref_number" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="claim_type" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="property_type" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="title_no" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="land_office" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="lot_number" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="property_address_1" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="property_address_2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="property_address_3" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="property_district" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="mukim" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="property_city" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="property_post_code" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="security_value" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="property_desc" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="property_owner_1" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="property_owner_2" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="insurance_company" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="insurance_type" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="coverage_type" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="participant_name" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="risk_address_1" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="risk_address_2" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="risk_address_3" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="risk_post_code" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="risk_city" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="risk_state_code" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="risk_country_code" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="start_date" Type="DateTime" Nullable="false" />
+          <Property Name="end_date" Type="DateTime" Nullable="false" />
+          <Property Name="premium_amt" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="sum_insured_amt" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="insurance_last_modified_date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="t_order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="full_name" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="zip_code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="area" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+          <Property Name="country" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="mobile_phone" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="id_card_number" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="birth_date" Type="DateTime" Nullable="false" />
+          <Property Name="height" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="weight" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="marriage_status" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="haji" Type="Int32" Nullable="false" />
+          <Property Name="pewaris_name" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+          <Property Name="pewaris_id_card_number" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="pewaris_relation" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="pewaris_gender" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="pewaris_phone" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="pewaris_payment_for" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+          <Property Name="order_money" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="check_number" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="order_name" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+          <Property Name="order_tarikh" Type="DateTime" Nullable="false" />
+          <Property Name="order_kp_number" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="wakil_name" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+          <Property Name="wakil_tarikh" Type="DateTime" Nullable="false" />
+          <Property Name="wakil_code" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" />
+          <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="user_email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="user_password" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="user_first_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="user_last_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="user_last_login" Type="DateTime" Nullable="false" />
+          <Property Name="user_group_id" Type="Int32" Nullable="false" />
+          <Property Name="user_birth_place" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="user_birth_date" Type="DateTime" Nullable="false" />
+          <Property Name="user_address" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="user_social_number" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="user_phone_number" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="user_id_card_file" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="user_photo_file" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="user_gender" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="user_marital_status" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" />
+          <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_group">
+          <Key>
+            <PropertyRef Name="user_group_id" />
+          </Key>
+          <Property Name="user_group_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_group_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" />
+          <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user_group_access">
+          <Key>
+            <PropertyRef Name="uga_id" />
+          </Key>
+          <Property Name="uga_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="access_id" Type="Int32" Nullable="false" />
+          <Property Name="user_group_id" Type="Int32" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" />
+          <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user_group_menu">
+          <Key>
+            <PropertyRef Name="ugm_id" />
+          </Key>
+          <Property Name="ugm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_group_id" Type="Int32" Nullable="false" />
+          <Property Name="menu_id" Type="Int32" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" />
+          <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user_internal">
+          <Key>
+            <PropertyRef Name="ui_id" />
+          </Key>
+          <Property Name="ui_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="ui_nip" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ui_jabatan" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ui_grade" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="updated_date" Type="DateTime" Nullable="false" />
+          <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="nsframeworkModelStoreContainer" CdmEntityContainer="Entities1">
+          <EntitySetMapping Name="access_settings">
+            <EntityTypeMapping TypeName="nsframeworkModel.access_settings">
+              <MappingFragment StoreEntitySet="access_settings">
+                <ScalarProperty Name="access_id" ColumnName="access_id" />
+                <ScalarProperty Name="access_name" ColumnName="access_name" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menus">
+            <EntityTypeMapping TypeName="nsframeworkModel.menu">
+              <MappingFragment StoreEntitySet="menu">
+                <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+                <ScalarProperty Name="menu_name" ColumnName="menu_name" />
+                <ScalarProperty Name="menu_page" ColumnName="menu_page" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Bank_data">
+            <EntityTypeMapping TypeName="nsframeworkModel.t_Bank_data">
+              <MappingFragment StoreEntitySet="t_Bank_data">
+                <ScalarProperty Name="bd_id" ColumnName="bd_id" />
+                <ScalarProperty Name="policy_no" ColumnName="policy_no" />
+                <ScalarProperty Name="bank_ref_number" ColumnName="bank_ref_number" />
+                <ScalarProperty Name="nric" ColumnName="nric" />
+                <ScalarProperty Name="old_ic" ColumnName="old_ic" />
+                <ScalarProperty Name="participant_name" ColumnName="participant_name" />
+                <ScalarProperty Name="customer_address_1" ColumnName="customer_address_1" />
+                <ScalarProperty Name="customer_address_2" ColumnName="customer_address_2" />
+                <ScalarProperty Name="customer_address_3" ColumnName="customer_address_3" />
+                <ScalarProperty Name="customer_address_4" ColumnName="customer_address_4" />
+                <ScalarProperty Name="customer_address_5" ColumnName="customer_address_5" />
+                <ScalarProperty Name="customer_post_code" ColumnName="customer_post_code" />
+                <ScalarProperty Name="property_type" ColumnName="property_type" />
+                <ScalarProperty Name="property_address" ColumnName="property_address" />
+                <ScalarProperty Name="property_address_1" ColumnName="property_address_1" />
+                <ScalarProperty Name="property_address_2" ColumnName="property_address_2" />
+                <ScalarProperty Name="property_address_3" ColumnName="property_address_3" />
+                <ScalarProperty Name="property_address_4" ColumnName="property_address_4" />
+                <ScalarProperty Name="property_post_code" ColumnName="property_post_code" />
+                <ScalarProperty Name="risk_type" ColumnName="risk_type" />
+                <ScalarProperty Name="policy_effective_date" ColumnName="policy_effective_date" />
+                <ScalarProperty Name="policy_expired_date" ColumnName="policy_expired_date" />
+                <ScalarProperty Name="sum_covered" ColumnName="sum_covered" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_dmms_branch">
+            <EntityTypeMapping TypeName="nsframeworkModel.t_dmms_branch">
+              <MappingFragment StoreEntitySet="t_dmms_branch">
+                <ScalarProperty Name="BRANCH_CODE" ColumnName="BRANCH_CODE" />
+                <ScalarProperty Name="BRANCH_NAME" ColumnName="BRANCH_NAME" />
+                <ScalarProperty Name="BRANCH_ADDRESS" ColumnName="BRANCH_ADDRESS" />
+                <ScalarProperty Name="TIMESTAMP" ColumnName="TIMESTAMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_dmms_master">
+            <EntityTypeMapping TypeName="nsframeworkModel.t_dmms_master">
+              <MappingFragment StoreEntitySet="t_dmms_master">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BANK_REF_NO" ColumnName="BANK_REF_NO" />
+                <ScalarProperty Name="NEW_NRIC" ColumnName="NEW_NRIC" />
+                <ScalarProperty Name="OLD_NRIC" ColumnName="OLD_NRIC" />
+                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
+                <ScalarProperty Name="CUSTOMER_ADD2" ColumnName="CUSTOMER_ADD2" />
+                <ScalarProperty Name="CUSTOMER_ADD3" ColumnName="CUSTOMER_ADD3" />
+                <ScalarProperty Name="CUSTOMER_ADD4" ColumnName="CUSTOMER_ADD4" />
+                <ScalarProperty Name="CUSTOMER_ADD5" ColumnName="CUSTOMER_ADD5" />
+                <ScalarProperty Name="CUSTOMER_CITY" ColumnName="CUSTOMER_CITY" />
+                <ScalarProperty Name="CUSTOMER_POSTCODE" ColumnName="CUSTOMER_POSTCODE" />
+                <ScalarProperty Name="PROPERTY_TYPE" ColumnName="PROPERTY_TYPE" />
+                <ScalarProperty Name="PROPERTY_ADD1" ColumnName="PROPERTY_ADD1" />
+                <ScalarProperty Name="PROPERTY_ADD2" ColumnName="PROPERTY_ADD2" />
+                <ScalarProperty Name="PROPERTY_ADD3" ColumnName="PROPERTY_ADD3" />
+                <ScalarProperty Name="PROPERTY_ADD4" ColumnName="PROPERTY_ADD4" />
+                <ScalarProperty Name="PROPERTY_CITY" ColumnName="PROPERTY_CITY" />
+                <ScalarProperty Name="PROPERTY_POSCODE" ColumnName="PROPERTY_POSCODE" />
+                <ScalarProperty Name="INSURANCE_TYPE" ColumnName="INSURANCE_TYPE" />
+                <ScalarProperty Name="CERT_START_DATE" ColumnName="CERT_START_DATE" />
+                <ScalarProperty Name="CERT_END_DATE" ColumnName="CERT_END_DATE" />
+                <ScalarProperty Name="SUM_INSURED_AMOUNT" ColumnName="SUM_INSURED_AMOUNT" />
+                <ScalarProperty Name="CERTIFICATE_NO" ColumnName="CERTIFICATE_NO" />
+                <ScalarProperty Name="BANK_STAFF" ColumnName="BANK_STAFF" />
+                <ScalarProperty Name="ACC_NO" ColumnName="ACC_NO" />
+                <ScalarProperty Name="TRITON_ACC_NO" ColumnName="TRITON_ACC_NO" />
+                <ScalarProperty Name="BRANCH_CODE" ColumnName="BRANCH_CODE" />
+                <ScalarProperty Name="FACILTY_TYPE" ColumnName="FACILTY_TYPE" />
+                <ScalarProperty Name="APPROVED_LIMIT" ColumnName="APPROVED_LIMIT" />
+                <ScalarProperty Name="APPROVED_DATE" ColumnName="APPROVED_DATE" />
+                <ScalarProperty Name="BAL_OUTSTANDING" ColumnName="BAL_OUTSTANDING" />
+                <ScalarProperty Name="COST_OUTSTANDING" ColumnName="COST_OUTSTANDING" />
+                <ScalarProperty Name="PRINCIPAL_OUTSTANDING" ColumnName="PRINCIPAL_OUTSTANDING" />
+                <ScalarProperty Name="UEI_OUTSTANDING" ColumnName="UEI_OUTSTANDING" />
+                <ScalarProperty Name="MONTH_ARREARS" ColumnName="MONTH_ARREARS" />
+                <ScalarProperty Name="CREDIT_STATUS" ColumnName="CREDIT_STATUS" />
+                <ScalarProperty Name="CREDIT_STAT_CHG_DATE" ColumnName="CREDIT_STAT_CHG_DATE" />
+                <ScalarProperty Name="NPF_STATUS" ColumnName="NPF_STATUS" />
+                <ScalarProperty Name="REPORTING_BALANCE" ColumnName="REPORTING_BALANCE" />
+                <ScalarProperty Name="INCOME_ARREARS" ColumnName="INCOME_ARREARS" />
+                <ScalarProperty Name="CURR_BAL_OUTSTANDING" ColumnName="CURR_BAL_OUTSTANDING" />
+                <ScalarProperty Name="COLLATERAL_REFNO" ColumnName="COLLATERAL_REFNO" />
+                <ScalarProperty Name="CLAIM_TYPE" ColumnName="CLAIM_TYPE" />
+                <ScalarProperty Name="TITLE_NO" ColumnName="TITLE_NO" />
+                <ScalarProperty Name="LAND_OFFICE" ColumnName="LAND_OFFICE" />
+                <ScalarProperty Name="LOT_NO" ColumnName="LOT_NO" />
+                <ScalarProperty Name="PROPERTY_DISTRICT" ColumnName="PROPERTY_DISTRICT" />
+                <ScalarProperty Name="MUKIM" ColumnName="MUKIM" />
+                <ScalarProperty Name="SECURITY_VALUE" ColumnName="SECURITY_VALUE" />
+                <ScalarProperty Name="PROPERTY_DESC" ColumnName="PROPERTY_DESC" />
+                <ScalarProperty Name="PROPERTY_OWNER1" ColumnName="PROPERTY_OWNER1" />
+                <ScalarProperty Name="PROPERTY_OWNER2" ColumnName="PROPERTY_OWNER2" />
+                <ScalarProperty Name="INSURANCE_COMPANY" ColumnName="INSURANCE_COMPANY" />
+                <ScalarProperty Name="POLICY_NO" ColumnName="POLICY_NO" />
+                <ScalarProperty Name="COVERAGE_TYPE" ColumnName="COVERAGE_TYPE" />
+                <ScalarProperty Name="PARTICIPANT_NAME" ColumnName="PARTICIPANT_NAME" />
+                <ScalarProperty Name="RISK_ADD1" ColumnName="RISK_ADD1" />
+                <ScalarProperty Name="RISK_ADD2" ColumnName="RISK_ADD2" />
+                <ScalarProperty Name="RISK_ADD3" ColumnName="RISK_ADD3" />
+                <ScalarProperty Name="RISK_ADD4" ColumnName="RISK_ADD4" />
+                <ScalarProperty Name="RISK_ADD5" ColumnName="RISK_ADD5" />
+                <ScalarProperty Name="RISK_POSTCODE" ColumnName="RISK_POSTCODE" />
+                <ScalarProperty Name="RISK_STATE_CODE" ColumnName="RISK_STATE_CODE" />
+                <ScalarProperty Name="PREMIUM_AMOUNT" ColumnName="PREMIUM_AMOUNT" />
+                <ScalarProperty Name="INSURANCE_LAST_MODIFIED_DATE" ColumnName="INSURANCE_LAST_MODIFIED_DATE" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="TIMESTAMP2" ColumnName="TIMESTAMP2" />
+                <ScalarProperty Name="CONTRIBUTION_TO_BE_PAID_BY_CUST" ColumnName="CONTRIBUTION_TO_BE_PAID_BY_CUST" />
+                <ScalarProperty Name="CONTRIBUTION_TO_BE_PAID_BY_BANK" ColumnName="CONTRIBUTION_TO_BE_PAID_BY_BANK" />
+                <ScalarProperty Name="CONTRIBUTION_TO_BE_PAID_BY_BROKER" ColumnName="CONTRIBUTION_TO_BE_PAID_BY_BROKER" />
+                <ScalarProperty Name="INSURANCE_LAST_MOD_DATE" ColumnName="INSURANCE_LAST_MOD_DATE" />
+                <ScalarProperty Name="CONTRIBUTION" ColumnName="CONTRIBUTION" />
+                <ScalarProperty Name="COMISSION" ColumnName="COMISSION" />
+                <ScalarProperty Name="STAMP_DUTY" ColumnName="STAMP_DUTY" />
+                <ScalarProperty Name="POLICE_OR_ARMY_NO" ColumnName="POLICE_OR_ARMY_NO" />
+                <ScalarProperty Name="PASSPORT_NO" ColumnName="PASSPORT_NO" />
+                <ScalarProperty Name="BRANCHES" ColumnName="BRANCHES" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="SETTLEMENT_DATE" ColumnName="SETTLEMENT_DATE" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="ADD_NEW_CUSTOMER_DATE" ColumnName="ADD_NEW_CUSTOMER_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_Insurance_data">
+            <EntityTypeMapping TypeName="nsframeworkModel.t_Insurance_data">
+              <MappingFragment StoreEntitySet="t_Insurance_data">
+                <ScalarProperty Name="id_id" ColumnName="id_id" />
+                <ScalarProperty Name="policy_no" ColumnName="policy_no" />
+                <ScalarProperty Name="ic_breg_no" ColumnName="ic_breg_no" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="bank_staff" ColumnName="bank_staff" />
+                <ScalarProperty Name="address_1" ColumnName="address_1" />
+                <ScalarProperty Name="address_2" ColumnName="address_2" />
+                <ScalarProperty Name="address_3" ColumnName="address_3" />
+                <ScalarProperty Name="post_code" ColumnName="post_code" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="account_no" ColumnName="account_no" />
+                <ScalarProperty Name="triton_account_no" ColumnName="triton_account_no" />
+                <ScalarProperty Name="branch_code" ColumnName="branch_code" />
+                <ScalarProperty Name="facility_type" ColumnName="facility_type" />
+                <ScalarProperty Name="approved_limit" ColumnName="approved_limit" />
+                <ScalarProperty Name="approved_date" ColumnName="approved_date" />
+                <ScalarProperty Name="balance_outstanding" ColumnName="balance_outstanding" />
+                <ScalarProperty Name="cost_outstanding" ColumnName="cost_outstanding" />
+                <ScalarProperty Name="principal_outstanding" ColumnName="principal_outstanding" />
+                <ScalarProperty Name="uei_outstanding" ColumnName="uei_outstanding" />
+                <ScalarProperty Name="month_arrears" ColumnName="month_arrears" />
+                <ScalarProperty Name="credit_status" ColumnName="credit_status" />
+                <ScalarProperty Name="credit_stat_change_date" ColumnName="credit_stat_change_date" />
+                <ScalarProperty Name="npf_status" ColumnName="npf_status" />
+                <ScalarProperty Name="reporting_balance" ColumnName="reporting_balance" />
+                <ScalarProperty Name="income_arrears" ColumnName="income_arrears" />
+                <ScalarProperty Name="curr_balance_outstanding" ColumnName="curr_balance_outstanding" />
+                <ScalarProperty Name="collateral_ref_number" ColumnName="collateral_ref_number" />
+                <ScalarProperty Name="claim_type" ColumnName="claim_type" />
+                <ScalarProperty Name="property_type" ColumnName="property_type" />
+                <ScalarProperty Name="title_no" ColumnName="title_no" />
+                <ScalarProperty Name="land_office" ColumnName="land_office" />
+                <ScalarProperty Name="lot_number" ColumnName="lot_number" />
+                <ScalarProperty Name="property_address_1" ColumnName="property_address_1" />
+                <ScalarProperty Name="property_address_2" ColumnName="property_address_2" />
+                <ScalarProperty Name="property_address_3" ColumnName="property_address_3" />
+                <ScalarProperty Name="property_district" ColumnName="property_district" />
+                <ScalarProperty Name="mukim" ColumnName="mukim" />
+                <ScalarProperty Name="property_city" ColumnName="property_city" />
+                <ScalarProperty Name="property_post_code" ColumnName="property_post_code" />
+                <ScalarProperty Name="security_value" ColumnName="security_value" />
+                <ScalarProperty Name="property_desc" ColumnName="property_desc" />
+                <ScalarProperty Name="property_owner_1" ColumnName="property_owner_1" />
+                <ScalarProperty Name="property_owner_2" ColumnName="property_owner_2" />
+                <ScalarProperty Name="insurance_company" ColumnName="insurance_company" />
+                <ScalarProperty Name="insurance_type" ColumnName="insurance_type" />
+                <ScalarProperty Name="coverage_type" ColumnName="coverage_type" />
+                <ScalarProperty Name="participant_name" ColumnName="participant_name" />
+                <ScalarProperty Name="risk_address_1" ColumnName="risk_address_1" />
+                <ScalarProperty Name="risk_address_2" ColumnName="risk_address_2" />
+                <ScalarProperty Name="risk_address_3" ColumnName="risk_address_3" />
+                <ScalarProperty Name="risk_post_code" ColumnName="risk_post_code" />
+                <ScalarProperty Name="risk_city" ColumnName="risk_city" />
+                <ScalarProperty Name="risk_state_code" ColumnName="risk_state_code" />
+                <ScalarProperty Name="risk_country_code" ColumnName="risk_country_code" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="premium_amt" ColumnName="premium_amt" />
+                <ScalarProperty Name="sum_insured_amt" ColumnName="sum_insured_amt" />
+                <ScalarProperty Name="insurance_last_modified_date" ColumnName="insurance_last_modified_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="t_order">
+            <EntityTypeMapping TypeName="nsframeworkModel.t_order">
+              <MappingFragment StoreEntitySet="t_order">
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="full_name" ColumnName="full_name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile_phone" ColumnName="mobile_phone" />
+                <ScalarProperty Name="id_card_number" ColumnName="id_card_number" />
+                <ScalarProperty Name="birth_date" ColumnName="birth_date" />
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="marriage_status" ColumnName="marriage_status" />
+                <ScalarProperty Name="haji" ColumnName="haji" />
+                <ScalarProperty Name="pewaris_name" ColumnName="pewaris_name" />
+                <ScalarProperty Name="pewaris_id_card_number" ColumnName="pewaris_id_card_number" />
+                <ScalarProperty Name="pewaris_relation" ColumnName="pewaris_relation" />
+                <ScalarProperty Name="pewaris_gender" ColumnName="pewaris_gender" />
+                <ScalarProperty Name="pewaris_phone" ColumnName="pewaris_phone" />
+                <ScalarProperty Name="pewaris_payment_for" ColumnName="pewaris_payment_for" />
+                <ScalarProperty Name="order_money" ColumnName="order_money" />
+                <ScalarProperty Name="check_number" ColumnName="check_number" />
+                <ScalarProperty Name="order_name" ColumnName="order_name" />
+                <ScalarProperty Name="order_tarikh" ColumnName="order_tarikh" />
+                <ScalarProperty Name="order_kp_number" ColumnName="order_kp_number" />
+                <ScalarProperty Name="wakil_name" ColumnName="wakil_name" />
+                <ScalarProperty Name="wakil_tarikh" ColumnName="wakil_tarikh" />
+                <ScalarProperty Name="wakil_code" ColumnName="wakil_code" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="nsframeworkModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_first_name" ColumnName="user_first_name" />
+                <ScalarProperty Name="user_last_name" ColumnName="user_last_name" />
+                <ScalarProperty Name="user_last_login" ColumnName="user_last_login" />
+                <ScalarProperty Name="user_group_id" ColumnName="user_group_id" />
+                <ScalarProperty Name="user_birth_place" ColumnName="user_birth_place" />
+                <ScalarProperty Name="user_birth_date" ColumnName="user_birth_date" />
+                <ScalarProperty Name="user_address" ColumnName="user_address" />
+                <ScalarProperty Name="user_social_number" ColumnName="user_social_number" />
+                <ScalarProperty Name="user_phone_number" ColumnName="user_phone_number" />
+                <ScalarProperty Name="user_id_card_file" ColumnName="user_id_card_file" />
+                <ScalarProperty Name="user_photo_file" ColumnName="user_photo_file" />
+                <ScalarProperty Name="user_gender" ColumnName="user_gender" />
+                <ScalarProperty Name="user_marital_status" ColumnName="user_marital_status" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_group">
+            <EntityTypeMapping TypeName="nsframeworkModel.user_group">
+              <MappingFragment StoreEntitySet="user_group">
+                <ScalarProperty Name="user_group_id" ColumnName="user_group_id" />
+                <ScalarProperty Name="user_group_name" ColumnName="user_group_name" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_group_access">
+            <EntityTypeMapping TypeName="nsframeworkModel.user_group_access">
+              <MappingFragment StoreEntitySet="user_group_access">
+                <ScalarProperty Name="uga_id" ColumnName="uga_id" />
+                <ScalarProperty Name="access_id" ColumnName="access_id" />
+                <ScalarProperty Name="user_group_id" ColumnName="user_group_id" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_group_menu">
+            <EntityTypeMapping TypeName="nsframeworkModel.user_group_menu">
+              <MappingFragment StoreEntitySet="user_group_menu">
+                <ScalarProperty Name="ugm_id" ColumnName="ugm_id" />
+                <ScalarProperty Name="user_group_id" ColumnName="user_group_id" />
+                <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_internal">
+            <EntityTypeMapping TypeName="nsframeworkModel.user_internal">
+              <MappingFragment StoreEntitySet="user_internal">
+                <ScalarProperty Name="ui_id" ColumnName="ui_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="ui_nip" ColumnName="ui_nip" />
+                <ScalarProperty Name="ui_jabatan" ColumnName="ui_jabatan" />
+                <ScalarProperty Name="ui_grade" ColumnName="ui_grade" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_login_user" FunctionName="nsframeworkModel.Store.sp_login_user" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="nsframeworkModel.access_settings" Width="1.5" PointX="0.75" PointY="0.75" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.menu" Width="1.5" PointX="2.75" PointY="0.75" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.t_Bank_data" Width="1.5" PointX="4.75" PointY="0.75" Height="5.4417122395833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.t_dmms_branch" Width="1.5" PointX="0.75" PointY="4.75" Height="1.7879850260416657" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.t_dmms_master" Width="1.5" PointX="6.75" PointY="0.75" Height="16.787496744791667" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.t_Insurance_data" Width="1.5" PointX="0.75" PointY="7.75" Height="12.556865234375003" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.t_order" Width="1.5" PointX="2.75" PointY="7.75" Height="7.3647265625000031" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.user" Width="1.5" PointX="8.75" PointY="0.75" Height="5.057109375" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.user_group" Width="1.5" PointX="8.75" PointY="6.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.user_group_access" Width="1.5" PointX="8.75" PointY="9.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.user_group_menu" Width="1.5" PointX="10.75" PointY="0.75" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="nsframeworkModel.user_internal" Width="1.5" PointX="10.75" PointY="4.75" Height="2.9417936197916674" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

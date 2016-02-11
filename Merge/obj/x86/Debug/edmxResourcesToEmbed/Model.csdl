@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="nsframeworkModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="access_settings" EntityType="nsframeworkModel.access_settings" />
+    <EntitySet Name="menus" EntityType="nsframeworkModel.menu" />
+    <EntitySet Name="t_Bank_data" EntityType="nsframeworkModel.t_Bank_data" />
+    <EntitySet Name="t_Insurance_data" EntityType="nsframeworkModel.t_Insurance_data" />
+    <EntitySet Name="t_order" EntityType="nsframeworkModel.t_order" />
+    <EntitySet Name="users" EntityType="nsframeworkModel.user" />
+    <EntitySet Name="user_group" EntityType="nsframeworkModel.user_group" />
+    <EntitySet Name="user_group_access" EntityType="nsframeworkModel.user_group_access" />
+    <EntitySet Name="user_group_menu" EntityType="nsframeworkModel.user_group_menu" />
+    <EntitySet Name="user_internal" EntityType="nsframeworkModel.user_internal" />
+    <FunctionImport Name="sp_login_user" EntitySet="users" ReturnType="Collection(nsframeworkModel.user)">
+      <Parameter Name="user_email" Mode="In" Type="String" />
+      <Parameter Name="user_password" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="t_dmms_branch" EntityType="nsframeworkModel.t_dmms_branch" />
+    <EntitySet Name="t_dmms_master" EntityType="nsframeworkModel.t_dmms_master" />
+  </EntityContainer>
+  <EntityType Name="access_settings">
+    <Key>
+      <PropertyRef Name="access_id" />
+    </Key>
+    <Property Name="access_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="access_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="parent_id" Type="Int32" Nullable="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" />
+    <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="updated_date" Type="DateTime" Nullable="false" />
+    <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="menu_id" />
+    </Key>
+    <Property Name="menu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menu_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="menu_page" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="parent_id" Type="Int32" Nullable="false" />
+    <Property Name="icon" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" />
+    <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="updated_date" Type="DateTime" Nullable="false" />
+    <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="t_Bank_data">
+    <Key>
+      <PropertyRef Name="bd_id" />
+      <PropertyRef Name="policy_no" />
+    </Key>
+    <Property Name="bd_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="policy_no" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="agent_code" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="agent_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="class_code" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="prc_sc_code" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="risk_class" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="risk_desc" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="prop_address_1" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="prop_address_2" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="prop_address_3" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="prop_address_4" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="endorsement_number" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="assured_code" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="assured_name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="assured_name_additional" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ic" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="from_date" Type="DateTime" Nullable="false" />
+    <Property Name="to_date" Type="DateTime" Nullable="false" />
+    <Property Name="approved_date" Type="DateTime" Nullable="false" />
+    <Property Name="sum_covered" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="gross_premium" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="bank_ref_number" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="nric" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="old_ic" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="participant_name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customer_address_1" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customer_address_2" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customer_address_3" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customer_address_4" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customer_address_5" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customer_post_code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_type" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_address_1" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_address_2" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_address_3" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_address_4" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_post_code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="risk_type" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="policy_effective_date" Nullable="false" />
+    <Property Type="DateTime" Name="policy_expired_date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="t_Insurance_data">
+    <Key>
+      <PropertyRef Name="id_id" />
+    </Key>
+    <Property Name="id_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="policy_no" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="no" Type="Int32" Nullable="false" />
+    <Property Name="account_number" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="nric" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="limit" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="property_address" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="property_type" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="value" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="insurance_co" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="insurance_type" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="start_date" Type="DateTime" Nullable="false" />
+    <Property Name="expired_date" Type="DateTime" Nullable="false" />
+    <Property Name="premium" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="sum_insurance" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="String" Name="ic_breg_no" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="customer_name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="bank_staff" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="address_1" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="address_2" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="address_3" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="post_code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="city" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="account_no" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="triton_account_no" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="branch_code" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="facility_type" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="approved_limit" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="approved_date" />
+    <Property Type="String" Name="balance_outstanding" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="cost_outstanding" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="principal_outstanding" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="uei_outstanding" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="month_arrears" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="credit_status" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="credit_stat_change_date" />
+    <Property Type="String" Name="npf_status" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="reporting_balance" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="income_arrears" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="curr_balance_outstanding" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="collateral_ref_number" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="claim_type" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="title_no" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="land_office" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="lot_number" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_address_1" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_address_2" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_address_3" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_district" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="mukim" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_city" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_post_code" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="security_value" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_desc" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_owner_1" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="property_owner_2" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="insurance_company" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="coverage_type" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="participant_name" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="risk_address_1" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="risk_address_2" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="risk_address_3" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="risk_post_code" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="risk_city" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="risk_state_code" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="risk_country_code" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="end_date" Nullable="false" />
+    <Property Type="String" Name="premium_amt" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="sum_insured_amt" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="insurance_last_modified_date" />
+  </EntityType>
+  <EntityType Name="t_order">
+    <Key>
+      <PropertyRef Name="order_id" />
+    </Key>
+    <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="full_name" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="zip_code" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="area" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="country" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="phone" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="mobile_phone" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="id_card_number" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="birth_date" Type="DateTime" Nullable="false" />
+    <Property Name="height" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="weight" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="gender" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="marriage_status" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="haji" Type="Int32" Nullable="false" />
+    <Property Name="pewaris_name" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="pewaris_id_card_number" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="pewaris_relation" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="pewaris_gender" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="pewaris_phone" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="pewaris_payment_for" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="order_money" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="check_number" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="order_name" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="order_tarikh" Type="DateTime" Nullable="false" />
+    <Property Name="order_kp_number" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="wakil_name" Type="String" Nullable="false" MaxLength="8000" Unicode="false" FixedLength="false" />
+    <Property Name="wakil_tarikh" Type="DateTime" Nullable="false" />
+    <Property Name="wakil_code" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" />
+    <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="updated_date" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="user_email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="user_password" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="user_first_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="user_last_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="user_last_login" Type="DateTime" Nullable="false" />
+    <Property Name="user_group_id" Type="Int32" Nullable="false" />
+    <Property Name="user_birth_place" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="user_birth_date" Type="DateTime" Nullable="false" />
+    <Property Name="user_address" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="user_social_number" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="user_phone_number" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="user_id_card_file" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="user_photo_file" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="user_gender" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="user_marital_status" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" />
+    <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="updated_date" Type="DateTime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user_group">
+    <Key>
+      <PropertyRef Name="user_group_id" />
+    </Key>
+    <Property Name="user_group_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_group_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" />
+    <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="updated_date" Type="DateTime" Nullable="false" />
+    <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user_group_access">
+    <Key>
+      <PropertyRef Name="uga_id" />
+    </Key>
+    <Property Name="uga_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="access_id" Type="Int32" Nullable="false" />
+    <Property Name="user_group_id" Type="Int32" Nullable="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" />
+    <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="updated_date" Type="DateTime" Nullable="false" />
+    <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user_group_menu">
+    <Key>
+      <PropertyRef Name="ugm_id" />
+    </Key>
+    <Property Name="ugm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_group_id" Type="Int32" Nullable="false" />
+    <Property Name="menu_id" Type="Int32" Nullable="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" />
+    <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="updated_date" Type="DateTime" Nullable="false" />
+    <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user_internal">
+    <Key>
+      <PropertyRef Name="ui_id" />
+    </Key>
+    <Property Name="ui_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" Nullable="false" />
+    <Property Name="ui_nip" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ui_jabatan" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="ui_grade" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="created_date" Type="DateTime" Nullable="false" />
+    <Property Name="created_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+    <Property Name="updated_date" Type="DateTime" Nullable="false" />
+    <Property Name="updated_by" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="t_dmms_branch">
+    <Key>
+      <PropertyRef Name="BRANCH_CODE" />
+      <PropertyRef Name="BRANCH_NAME" />
+    </Key>
+    <Property Type="String" Name="BRANCH_CODE" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BRANCH_NAME" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BRANCH_ADDRESS" MaxLength="800" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="TIMESTAMP" />
+  </EntityType>
+  <EntityType Name="t_dmms_master">
+    <Key>
+      <PropertyRef Name="NEW_NRIC" />
+      <PropertyRef Name="PROPERTY_ADD1" />
+      <PropertyRef Name="CERT_START_DATE" />
+    </Key>
+    <Property Type="String" Name="BANK_REF_NO" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="NEW_NRIC" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="OLD_NRIC" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CUSTOMER_NAME" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CUSTOMER_ADD2" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CUSTOMER_ADD3" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CUSTOMER_ADD4" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CUSTOMER_ADD5" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CUSTOMER_CITY" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CUSTOMER_POSTCODE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_TYPE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_ADD1" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_ADD2" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_ADD3" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_ADD4" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_CITY" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_POSCODE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="INSURANCE_TYPE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CERT_START_DATE" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CERT_END_DATE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SUM_INSURED_AMOUNT" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CERTIFICATE_NO" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BANK_STAFF" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ACC_NO" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TRITON_ACC_NO" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BRANCH_CODE" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FACILTY_TYPE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="APPROVED_LIMIT" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="APPROVED_DATE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BAL_OUTSTANDING" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COST_OUTSTANDING" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PRINCIPAL_OUTSTANDING" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="UEI_OUTSTANDING" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MONTH_ARREARS" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREDIT_STATUS" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CREDIT_STAT_CHG_DATE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="NPF_STATUS" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="REPORTING_BALANCE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="INCOME_ARREARS" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CURR_BAL_OUTSTANDING" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COLLATERAL_REFNO" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CLAIM_TYPE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TITLE_NO" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LAND_OFFICE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LOT_NO" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_DISTRICT" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MUKIM" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="SECURITY_VALUE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_DESC" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_OWNER1" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PROPERTY_OWNER2" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="INSURANCE_COMPANY" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="POLICY_NO" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COVERAGE_TYPE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PARTICIPANT_NAME" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RISK_ADD1" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RISK_ADD2" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RISK_ADD3" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RISK_ADD4" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RISK_ADD5" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RISK_POSTCODE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RISK_STATE_CODE" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PREMIUM_AMOUNT" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="INSURANCE_LAST_MODIFIED_DATE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="STATUS" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TIMESTAMP2" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CONTRIBUTION_TO_BE_PAID_BY_CUST" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CONTRIBUTION_TO_BE_PAID_BY_BANK" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CONTRIBUTION_TO_BE_PAID_BY_BROKER" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="INSURANCE_LAST_MOD_DATE" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CONTRIBUTION" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COMISSION" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="STAMP_DUTY" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="POLICE_OR_ARMY_NO" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PASSPORT_NO" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BRANCHES" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FileName" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="UserName" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="SETTLEMENT_DATE" />
+    <Property Type="String" Name="REMARKS" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="ADD_NEW_CUSTOMER_DATE" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,1 @@
+Windows Form Application with Entity Framework with VS 2010 and sql2008R2
